@@ -40,6 +40,7 @@ const User = React.lazy(() => import('./views/users/User'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
+  { path: '/admin/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },

@@ -39,7 +39,7 @@ const Login = () => {
               <CCard className="p-4 mx-5">
                 <CCardBody>
                   <CForm onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Login</h1>
+                    <h1 style={{'color': 'aqua'}}>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>

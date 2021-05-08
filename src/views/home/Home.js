@@ -20,8 +20,8 @@ class Home extends Component {
         <React.Suspense fallback={loading}>
         <Navigation/>
           <Switch>
-            <Route path="/login" name="LoginPage" render={props => <Login {...props}/>} />
-            <Route exact path="/" name="BodyHome" render={props => <BodyLanding {...props}/>} />
+            <Route path="/home/login" name="LoginPage" render={props => <Login {...props}/>} />
+            <Route exact path="/home" name="BodyHome" render={props => <BodyLanding {...props}/>} />
           </Switch>
         <FooterLanding/>
         </React.Suspense>
