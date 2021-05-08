@@ -5,7 +5,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
-    to: '/dashboard',
+    to: '/home/home/dashboard',
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
     badge: {
       color: 'info',
@@ -14,144 +14,144 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Theme']
+    _children: ['KPI']
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
+    name: 'KPI tháng',
+    to: '/home/theme/colors',
     icon: 'cil-drop',
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
+    name: 'KPI đơn vị',
+    to: '/home/theme/typography',
     icon: 'cil-pencil',
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Components']
+    _children: ['Quản lí']
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Base',
+    name: 'Quản lí công việc',
     route: '/base',
     icon: 'cil-puzzle',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
+        to: '/home/base/breadcrumbs',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Cards',
-        to: '/base/cards',
+        to: '/home/base/cards',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Carousel',
-        to: '/base/carousels',
+        to: '/home/base/carousels',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Collapse',
-        to: '/base/collapses',
+        to: '/home/base/collapses',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Forms',
-        to: '/base/forms',
+        name: 'Thêm công việc',
+        to: '/home/base/forms',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Jumbotron',
-        to: '/base/jumbotrons',
+        to: '/home/base/jumbotrons',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'List group',
-        to: '/base/list-groups',
+        to: '/home/base/list-groups',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Navs',
-        to: '/base/navs',
+        to: '/home/base/navs',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Navbars',
-        to: '/base/navbars',
+        to: '/home/base/navbars',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Pagination',
-        to: '/base/paginations',
+        to: '/home/base/paginations',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Popovers',
-        to: '/base/popovers',
+        to: '/home/base/popovers',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Progress',
-        to: '/base/progress-bar',
+        to: '/home/base/progress-bar',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Switches',
-        to: '/base/switches',
+        to: '/home/base/switches',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Tables',
-        to: '/base/tables',
+        to: '/home/base/tables',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Tabs',
-        to: '/base/tabs',
+        to: '/home/base/tabs',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Tooltips',
-        to: '/base/tooltips',
+        to: '/home/base/tooltips',
       },
     ],
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Buttons',
+    name: 'Quản lí công việc',
     route: '/buttons',
     icon: 'cil-cursor',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'Buttons',
-        to: '/buttons/buttons',
+        to: '/home/buttons/buttons',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Brand buttons',
-        to: '/buttons/brand-buttons',
+        to: '/home/buttons/brand-buttons',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Buttons groups',
-        to: '/buttons/button-groups',
+        to: '/home/buttons/button-groups',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Dropdowns',
-        to: '/buttons/button-dropdowns',
+        to: '/home/buttons/button-dropdowns',
       }
     ],
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Charts',
-    to: '/charts',
+    to: '/home/charts',
     icon: 'cil-chart-pie'
   },
   {
@@ -163,7 +163,7 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'CoreUI Free',
-        to: '/icons/coreui-icons',
+        to: '/home/icons/coreui-icons',
         badge: {
           color: 'success',
           text: 'NEW',
@@ -172,12 +172,12 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'CoreUI Flags',
-        to: '/icons/flags',
+        to: '/home/icons/flags',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'CoreUI Brands',
-        to: '/icons/brands',
+        to: '/home/icons/brands',
       },
     ],
   },
@@ -190,29 +190,29 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Alerts',
-        to: '/notifications/alerts',
+        to: '/home/notifications/alerts',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Badges',
-        to: '/notifications/badges',
+        to: '/home/notifications/badges',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Modal',
-        to: '/notifications/modals',
+        to: '/home/notifications/modals',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Toaster',
-        to: '/notifications/toaster'
+        to: '/home/notifications/toaster'
       }
     ]
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Widgets',
-    to: '/widgets',
+    to: '/home/widgets',
     icon: 'cil-calculator',
     badge: {
       color: 'info',
@@ -235,22 +235,22 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Login',
-        to: '/login',
+        to: '/home/login',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Register',
-        to: '/register',
+        to: '/home/register',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Error 404',
-        to: '/404',
+        to: '/home/404',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Error 500',
-        to: '/500',
+        to: '/home/500',
       },
     ],
   },

@@ -15,8 +15,8 @@ const Navigation = () => {
             <h1>Pharma DX</h1>
           </Link>
           <Nav className="ml-auto ml-fix" >
-              <Nav.Link href="#home"><span className='dx-options'>Giới thiệu</span></Nav.Link>
-              <Nav.Link href="#features"><span className='dx-options'>Liên hệ</span></Nav.Link>
+              <Nav.Link href="#"><span className='dx-options'>Giới thiệu</span></Nav.Link>
+              <Nav.Link href="#"><span className='dx-options'>Liên hệ</span></Nav.Link>
           </Nav>
           <Button variant="light"><a className='dx-auth' href="#/login">Đăng nhập</a></Button>
         </Navbar>
