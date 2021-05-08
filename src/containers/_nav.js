@@ -5,7 +5,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
-    to: '/dashboard',
+    to: '/home/dashboard',
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
     badge: {
       color: 'info',
@@ -14,27 +14,27 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Theme']
+    _children: ['KPI']
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Colors',
+    name: 'KPI tháng',
     to: '/theme/colors',
     icon: 'cil-drop',
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Typography',
+    name: 'KPI đơn vị',
     to: '/theme/typography',
     icon: 'cil-pencil',
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Components']
+    _children: ['Quản lí']
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Base',
+    name: 'Quản lí công việc',
     route: '/base',
     icon: 'cil-puzzle',
     _children: [
@@ -122,7 +122,7 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Buttons',
+    name: 'Quản lí công việc',
     route: '/buttons',
     icon: 'cil-cursor',
     _children: [

@@ -1,7 +1,7 @@
 import React from 'react'
+import TheSidebar from './TheSidebar'
 import {
   TheContent,
-  TheSidebar,
   TheFooter,
   TheHeader
 } from './index'
