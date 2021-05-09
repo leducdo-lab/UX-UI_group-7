@@ -19,13 +19,13 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'KPI tháng',
-    to: '/theme/colors',
+    to: '/home/theme/colors',
     icon: 'cil-drop',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'KPI đơn vị',
-    to: '/theme/typography',
+    to: '/home/theme/typography',
     icon: 'cil-pencil',
   },
   {
@@ -60,7 +60,7 @@ const _nav =  [
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Forms',
+        name: 'Thêm công việc',
         to: '/home/base/forms',
       },
       {
@@ -129,29 +129,29 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Buttons',
-        to: '/buttons/buttons',
+        to: '/home/buttons/buttons',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Brand buttons',
-        to: '/buttons/brand-buttons',
+        to: '/home/buttons/brand-buttons',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Buttons groups',
-        to: '/buttons/button-groups',
+        to: '/home/buttons/button-groups',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Dropdowns',
-        to: '/buttons/button-dropdowns',
+        to: '/home/buttons/button-dropdowns',
       }
     ],
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Charts',
-    to: '/charts',
+    to: '/home/charts',
     icon: 'cil-chart-pie'
   },
   {
@@ -163,7 +163,7 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'CoreUI Free',
-        to: '/icons/coreui-icons',
+        to: '/home/icons/coreui-icons',
         badge: {
           color: 'success',
           text: 'NEW',
@@ -172,12 +172,12 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'CoreUI Flags',
-        to: '/icons/flags',
+        to: '/home/icons/flags',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'CoreUI Brands',
-        to: '/icons/brands',
+        to: '/home/icons/brands',
       },
     ],
   },
@@ -190,29 +190,29 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Alerts',
-        to: '/notifications/alerts',
+        to: '/home/notifications/alerts',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Badges',
-        to: '/notifications/badges',
+        to: '/home/notifications/badges',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Modal',
-        to: '/notifications/modals',
+        to: '/home/notifications/modals',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Toaster',
-        to: '/notifications/toaster'
+        to: '/home/notifications/toaster'
       }
     ]
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Widgets',
-    to: '/widgets',
+    to: '/home/widgets',
     icon: 'cil-calculator',
     badge: {
       color: 'info',
@@ -235,22 +235,22 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Login',
-        to: '/login',
+        to: '/home/login',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Register',
-        to: '/register',
+        to: '/home/register',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Error 404',
-        to: '/404',
+        to: '/home/404',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Error 500',
-        to: '/500',
+        to: '/home/500',
       },
     ],
   },

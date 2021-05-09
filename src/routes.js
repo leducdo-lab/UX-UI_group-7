@@ -49,7 +49,7 @@ const routes = [
   { path: '/home/base/prodlines', name: 'ProdLine', component: ProdLine },
   { path: '/home/base/carousels', name: 'Carousel', component: Carousels },
   { path: '/home/base/collapses', name: 'Collapse', component: Collapses },
-  { path: '/home/base/forms', name: 'Forms', component: BasicForms },
+  { path: '/home/base/forms', name: 'Thêm công việc', component: BasicForms },
   { path: '/home/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons },
   { path: '/home/base/list-groups', name: 'List Groups', component: ListGroups },
   { path: '/home/base/navbars', name: 'Navbars', component: Navbars },
