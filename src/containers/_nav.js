@@ -41,12 +41,12 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Bảng công việc',
-        to: '/home/base/breadcrumbs',
+        to: '/home/base/works',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Dây chuyền công việc',
-        to: '/home/base/cards',
+        to: '/home/base/prodlines',
       },
       {
         _tag: 'CSidebarNavItem',

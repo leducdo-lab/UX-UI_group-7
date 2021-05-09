@@ -43,7 +43,10 @@ const fields = [
 const Breadcrumbs = () => {
 
   const [details, setDetails] = useState([]);
+  const [works, setWorks] = useState(usersData);
+
   const toggleDetails = (index) => {
+
     const position = details.indexOf(index)
     let newDetails = details.slice()
     if (position !== -1) {
@@ -52,6 +55,18 @@ const Breadcrumbs = () => {
       newDetails = [...details, index]
     }
     setDetails(newDetails)
+  }
+
+  const removeWork = (id) => {
+    console.log(id);
+    const datas = works;
+
+    let index = datas.findIndex(work => work.id === id);
+
+    if (index !== -1) {
+      datas.splice(index, 1);
+      setWorks([...datas]);
+    }
   }
 
   return (
@@ -63,7 +78,7 @@ const Breadcrumbs = () => {
           </CCardHeader>
           <CCardBody>
             <CDataTable
-              items={usersData}
+              items={works}
               fields={fields}
               sorter
               hover
@@ -108,7 +123,12 @@ const Breadcrumbs = () => {
                           <CButton size="sm" color="info">
                             User Settings
                           </CButton>
-                          <CButton size="sm" color="danger" className="ml-1">
+                          <CButton
+                            size="sm"
+                            color="danger"
+                            className="ml-1"
+                            onClick={()=> {removeWork(item.id)}}
+                          >
                             Delete
                           </CButton>
                         </CCardBody>
