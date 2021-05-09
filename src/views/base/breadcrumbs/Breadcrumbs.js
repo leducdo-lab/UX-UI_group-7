@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CBadge,
   CButton,
@@ -9,27 +9,43 @@ import {
   CDataTable,
   CRow,
   CCollapse,
+  CSelect,
 } from '@coreui/react'
 
 
-import usersData from '../../users/UsersData'
-
 const getBadge = status => {
   switch (status) {
-    case 'Active': return 'success'
-    case 'Inactive': return 'secondary'
-    case 'Pending': return 'warning'
-    case 'Banned': return 'danger'
+    case 'Hoàn thành': return 'success'
+    case 'Đang thực hiện': return 'secondary'
     default: return 'primary'
   }
 }
 
 const fields = [
-  'name',
-  'start',
-  'end',
-  'role',
-  'status',
+  {
+    key: 'name',
+    label: 'Tên công việc'
+  },
+  {
+    key: 'mana_unit',
+    label: 'Đơn vị quản lý'
+  },
+  {
+    key: 'coor_unit',
+    label: 'Đơn vị phối hợp'
+  },
+  {
+    key: 'performer',
+    label: 'Người thực hiện'
+  },
+  {
+    key: 'date',
+    label: 'Thời gian'
+  },
+  {
+    key: 'status',
+    label: 'Trạng thái'
+  },
   {
     key: 'show_details',
     label: '',
@@ -43,7 +59,17 @@ const fields = [
 const Breadcrumbs = () => {
 
   const [details, setDetails] = useState([]);
-  const [works, setWorks] = useState(usersData);
+  const [works, setWorks] = useState([]);
+
+  useEffect(() => {
+    const getData = () => {
+      const listWork = JSON.parse(localStorage.getItem('listWork')) || [];
+
+      setWorks(listWork);
+    }
+
+    getData();
+  }, []);
 
   const toggleDetails = (index) => {
 
@@ -57,6 +83,20 @@ const Breadcrumbs = () => {
     setDetails(newDetails)
   }
 
+  const onChangeStatus = (value, id) => {
+    const datas = works;
+
+    let index = datas.findIndex(work => work.id === id);
+
+    if (index !== -1) {
+      datas[index] = {...datas[index], status: value}
+
+      setWorks([...datas]);
+      localStorage.setItem('listWork', JSON.stringify(datas));
+    }
+
+  }
+
   const removeWork = (id) => {
     console.log(id);
     const datas = works;
@@ -66,6 +106,7 @@ const Breadcrumbs = () => {
     if (index !== -1) {
       datas.splice(index, 1);
       setWorks([...datas]);
+      localStorage.setItem('listWork', JSON.stringify(datas));
     }
   }
 
@@ -84,7 +125,7 @@ const Breadcrumbs = () => {
               hover
               tableFilter
               itemsPerPageSelect
-              itemsPerPage={15}
+              itemsPerPage={5}
               pagination
               scopedSlots = {{
                 'status':
@@ -116,21 +157,30 @@ const Breadcrumbs = () => {
                       return (
                       <CCollapse show={details.includes(index)}>
                         <CCardBody>
-                          <h4>
-                            {item.username}
-                          </h4>
-                          <p className="text-muted">User since: {item.registered}</p>
-                          <CButton size="sm" color="info">
-                            User Settings
-                          </CButton>
-                          <CButton
-                            size="sm"
-                            color="danger"
-                            className="ml-1"
-                            onClick={()=> {removeWork(item.id)}}
-                          >
-                            Delete
-                          </CButton>
+                          <CRow>
+                            <CCol lg="4" md="4">
+                              <CSelect
+                                custom name="select"
+                                value={item.status}
+                                onChange={(e) => {onChangeStatus(e.target.value, item.id)}}
+                              >
+                                <option value="" selected>Chọn trạng thái</option>
+                                <option value="Mới tạo">Mới tạo</option>
+                                <option value="Đang thực hiện">Đang thực hiện</option>
+                                <option value="Hoàn thành">Hoàn thành</option>
+                              </CSelect>
+                            </CCol>
+                            <CCol lg="4" md="4">
+                              <CButton
+                                size="sm"
+                                color="danger"
+                                className="ml-1 mt-1"
+                                onClick={()=> {removeWork(item.id)}}
+                              >
+                                Delete
+                              </CButton>
+                            </CCol>
+                          </CRow>
                         </CCardBody>
                       </CCollapse>
                     )
