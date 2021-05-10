@@ -17,13 +17,13 @@ const MainChartExample = attributes => {
     const data2 = []
     const data3 = []
     for (let i = 0; i <= elements; i++) {
-      data1.push(random(50, 200))
+      data1.push(random(50, 80))
       data2.push(random(80, 100))
-      data3.push(65)
+      data3.push(random(70, 90))
     }
     return [
       {
-        label: 'My First dataset',
+        label: 'KPI của tổ HCI 01',
         backgroundColor: hexToRgba(brandInfo, 10),
         borderColor: brandInfo,
         pointHoverBackgroundColor: brandInfo,
@@ -31,7 +31,7 @@ const MainChartExample = attributes => {
         data: data1
       },
       {
-        label: 'My Second dataset',
+        label: 'KPI của tổ HCI 02',
         backgroundColor: 'transparent',
         borderColor: brandSuccess,
         pointHoverBackgroundColor: brandSuccess,
@@ -39,12 +39,11 @@ const MainChartExample = attributes => {
         data: data2
       },
       {
-        label: 'My Third dataset',
+        label: 'KPI của tổ HCI 03',
         backgroundColor: 'transparent',
         borderColor: brandDanger,
         pointHoverBackgroundColor: brandDanger,
         borderWidth: 1,
-        borderDash: [8, 5],
         data: data3
       }
     ]
@@ -66,8 +65,8 @@ const MainChartExample = attributes => {
             ticks: {
               beginAtZero: true,
               maxTicksLimit: 5,
-              stepSize: Math.ceil(250 / 5),
-              max: 250
+              stepSize: Math.ceil(100 / 5),
+              max: 100
             },
             gridLines: {
               display: true
@@ -92,7 +91,7 @@ const MainChartExample = attributes => {
       {...attributes}
       datasets={defaultDatasets}
       options={defaultOptions}
-      labels={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
+      labels={['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']}
     />
   )
 }
