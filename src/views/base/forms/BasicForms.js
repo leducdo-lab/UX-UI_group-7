@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import {
   CButton,
   CCard,
@@ -35,25 +37,42 @@ const BasicForms = () => {
 
   const [message, setMessage] = useState('');
 
+  const {id} = useParams();
+
+  useEffect(() => {
+    if (id) {
+      const listWork = JSON.parse(localStorage.getItem('listWork')) || [];
+      if (listWork.length > 0) {
+        const work = listWork.find(item => item.id === parseInt(id));
+        setForm({...work});
+      }
+    }
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let work = form;
     const listWork = JSON.parse(localStorage.getItem('listWork')) || [];
 
     if (listWork.length > 0) {
-      let id = listWork[listWork.length - 1].id;
-      work.id = id+1;
-      work.status = 'Mới tạo';
+      if (id) {
+        const index = listWork.findIndex(item => item.id === parseInt(id));
+        listWork[index] = {...work};
+      } else {
+        let id = listWork[listWork.length - 1].id;
+        work.id = id+1;
+        work.status = 'Mới tạo';
 
-      listWork.push(work);
+        listWork.push(work);
+      }
     } else {
       work = {...work, id: 1, status: 'Mới tạo'};
       listWork.push(work);
     }
 
     localStorage.setItem('listWork', JSON.stringify(listWork));
-    resetForm();
-    setMessage('Tạo thành công');
+    if (!id) resetForm();
+    setMessage(!id?'Tạo thành công':'Sửa thành công');
   }
 
   const resetForm = () => {
@@ -74,7 +93,7 @@ const BasicForms = () => {
 
   setTimeout(function () {
     setMessage('');
-  }, 5000);
+  }, 6000);
 
   return (
     <>
@@ -83,7 +102,7 @@ const BasicForms = () => {
           <CCard>
             <CCardHeader>
               <CRow>
-                <CCol lg={8} md="8" >Thêm công việc</CCol>
+                <CCol lg={8} md="8" >{!id? 'Thêm công việc' : 'Sửa công việc'}</CCol>
                 <CCol className="float-right text-success" lg={4} md="4" >{message? message : ''}</CCol>
               </CRow>
             </CCardHeader>

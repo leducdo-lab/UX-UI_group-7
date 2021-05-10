@@ -11,6 +11,11 @@ import {
   CCollapse,
   CSelect,
 } from '@coreui/react'
+import {
+  CIcon
+} from '@coreui/icons-react'
+
+import {Link} from 'react-router-dom';
 
 
 const getBadge = status => {
@@ -162,6 +167,7 @@ const Breadcrumbs = () => {
                               <CSelect
                                 custom name="select"
                                 value={item.status}
+                                style={{'cursor': 'pointer'}}
                                 onChange={(e) => {onChangeStatus(e.target.value, item.id)}}
                               >
                                 <option value="" selected>Chọn trạng thái</option>
@@ -170,14 +176,31 @@ const Breadcrumbs = () => {
                                 <option value="Hoàn thành">Hoàn thành</option>
                               </CSelect>
                             </CCol>
-                            <CCol lg="4" md="4">
+                            <CCol lg="1" md="4">
+                              <CButton
+                                size="sm"
+                                color="warning"
+                                className="ml-1 mt-1"
+                              >
+                                <Link
+                                  to={`/home/base/edit/${item.id}`}
+                                  className="d-flex"
+                                  style={{'textDecoration': 'none', 'color': 'white'}}
+                                >
+                                  <CIcon className="mt-1 mx-2" name="cil-pencil" size="sm" />
+                                  Sửa
+                                </Link>
+                              </CButton>
+                            </CCol>
+                            <CCol lg="1" md="4">
                               <CButton
                                 size="sm"
                                 color="danger"
-                                className="ml-1 mt-1"
+                                className="ml-1 mt-1 d-flex"
                                 onClick={()=> {removeWork(item.id)}}
                               >
-                                Delete
+                                <CIcon className="mt-1 mx-2" name="cil-trash" size="sm" />
+                                Xoá
                               </CButton>
                             </CCol>
                           </CRow>
