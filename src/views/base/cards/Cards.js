@@ -1,410 +1,214 @@
-import React from 'react'
+import React, { useState, useEffect }from 'react'
 import {
-  CBadge,
   CCard,
   CCardBody,
-  CCardFooter,
   CCardHeader,
   CCol,
   CRow,
-  CCollapse,
-  CFade,
-  CSwitch,
-  CLink
+  CButton,
+  CCardFooter,
+  CButtonClose
 } from  '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { DocsLink } from 'src/reusable'
 
+import {
+  CIcon
+} from '@coreui/icons-react'
+
+import Item from './Item';
 
 const Cards = () => {
-  const [collapsed, setCollapsed] = React.useState(true)
-  const [showCard, setShowCard] = React.useState(true)
+
+  const [listSelect, setListSelect] = useState([]);
+  const [count, setCount] = useState(0);
+  const [works, setWorks] = useState([]);
+  const [disable, setDisable] = useState(true);
+  const [item, setItem] = useState({});
+
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const getData = () => {
+      const productLine = JSON.parse(localStorage.getItem('productLine')) || [];
+
+      if (productLine[0]) {
+        setWorks([...productLine]);
+        setDisable(false);
+      }
+    }
+
+    getData();
+  }, [])
+
+  const addWork = (value, index) => {
+    const list = JSON.parse(localStorage.getItem('listWork')) || [];
+    const data = works;
+
+    const item = list[value-1];
+    if (!data[index]) {
+      data.push(item);
+      setWorks([...data]);
+    } else {
+      data[index] = item;
+      setWorks([...data]);
+    }
+  }
+
+  const setEditProLine = () => {
+
+    const list =  works.map((item, index) => {
+      return (<Item item={item} index={index} addWork={addWork} />);
+    });
+
+    setListSelect([...list]);
+    setCount(list.length);
+    setDisable(true);
+  }
+
+  const addProductLine = () => {
+    setDisable(false);
+    setCount(0);
+    setListSelect([]);
+    localStorage.setItem('productLine', JSON.stringify(works));
+  }
+
+  const removeAll = () => {
+    localStorage.setItem('productLine', JSON.stringify([]));
+    setListSelect([]);
+    setWorks([]);
+  }
+
+  const addSelect = () => {
+    const list = JSON.parse(localStorage.getItem('listWork')) || [];
+    let item = null;
+    let ind = count;
+
+    if ((ind+1) <= list.length) {
+      console.log(ind);
+      item = (<Item index={ind} addWork={addWork}  />);
+
+      setCount(1+count);
+      listSelect.push(item);
+      setListSelect(listSelect);
+    }
+  }
+
+  const onSetItem = (work) => {
+    console.log(work);
+    setItem(work);
+    setVisible(true);
+  }
 
   return (
     <>
-      <CRow>
-        <CCol xs="12" sm="6" md="4">
-          <CCard>
-            <CCardHeader>
-              Card title
-              <DocsLink name="CCard"/>
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-            <CCardFooter>Card footer</CCardFooter>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard>
-            <CCardHeader>
-              Card with icon
-              <div className="card-header-actions">
-                <CIcon name="cil-check" className="float-right"/>
-              </div>
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard>
-            <CCardHeader>
-              Card with switch
-              <div className="card-header-actions">
-                <CSwitch className={'float-right mb-0'} color={'info'} defaultChecked size={'sm'} tabIndex="0" />
-              </div>
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard>
-            <CCardHeader>
-              Card with label
-              <div className="card-header-actions">
-                <CBadge color="success" className="float-right">Success</CBadge>
-              </div>
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard>
-            <CCardHeader>
-              Card with label
-              <div className="card-header-actions">
-                <CBadge shape="pill" color="danger" className="float-right">42</CBadge>
-              </div>
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs="12" sm="6" md="4">
+    <CRow>
+        <CCol lg={visible? 8 : 12} xs="12" sm="6" md="4">
           <CCard borderColor="primary">
             <CCardHeader>
-              Card outline primary
+              <CRow>
+                <CCol xs={8} className="mt-2" >Công việc hôm nay</CCol>
+                <CCol xs={4}>
+                  <CButton
+                    className="float-right"
+                    color="success"
+                    variant="outline"
+                    onClick={setEditProLine}
+                    disabled={disable}
+                  >
+                    <CIcon className="mt-1 mx-2" name="cil-pencil" size="lg" />
+                    Sửa
+                  </CButton>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+              <CRow>
+                {
+                  works.map((item, index) => {
+                    return (
+                      <CCol className="d-flex" key={index} lg="4" xs="12" sm="6" md="4">
+                        <CCard onClick={()=>{onSetItem(item)}} key={index} color="primary" className="text-white w-100">
+                          <CCardBody>
+                            {item.name}
+                          </CCardBody>
+                        </CCard>
+                        <CIcon className="mt-3 float-right" name="cil-chevron-right" size="2xl" />
+                      </CCol>
+                    )
+                  })
+                }
+              </CRow>
             </CCardBody>
           </CCard>
         </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="secondary">
-            <CCardHeader>
-              Card outline secondary
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="success">
-            <CCardHeader>
-              Card outline success
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="info">
-            <CCardHeader>
-              Card outline info
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="warning">
-            <CCardHeader>
-              Card outline warning
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="danger">
-            <CCardHeader>
-              Card outline danger
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="primary">
-            <CCardHeader>
-              Card with accent
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="secondary">
-            <CCardHeader>
-              Card with accent
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="success">
-            <CCardHeader>
-              Card with accent
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="info">
-            <CCardHeader>
-              Card with accent
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="warning">
-            <CCardHeader>
-              Card with accent
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="danger">
-            <CCardHeader>
-              Card with accent
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="primary" className="text-white text-center">
-            <CCardBody>
-              <blockquote className="card-bodyquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="success" className="text-white text-center">
-            <CCardBody>
-              <blockquote className="card-bodyquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="info" className="text-white text-center">
-            <CCardBody>
-              <blockquote className="card-bodyquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="warning" className="text-white text-center">
-            <CCardBody>
-              <blockquote className="card-bodyquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="danger" className="text-white text-center">
-            <CCardBody>
-              <blockquote className="card-bodyquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="primary" className="text-white text-center">
-            <CCardBody>
-              <blockquote className="card-bodyquote">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="primary" className="text-white">
-            <CCardHeader>
-              Card title
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="success" className="text-white">
-            <CCardHeader>
-              Card title
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="info" className="text-white">
-            <CCardHeader>
-              Card title
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="warning" className="text-white">
-            <CCardHeader>
-              Card title
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="gradient-secondary">
-            <CCardHeader>
-              Card title - gradient
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CFade in={showCard}>
+        {visible?
+          <CCol lg={4} md={4} xs={6}>
             <CCard>
               <CCardHeader>
-                Card actions
-                <div className="card-header-actions">
-                  <CLink className="card-header-action">
-                    <CIcon name="cil-settings" />
-                  </CLink>
-                  <CLink className="card-header-action" onClick={() => setCollapsed(!collapsed)}>
-                    <CIcon name={collapsed ? 'cil-chevron-bottom':'cil-chevron-top'} />
-                  </CLink>
-                  <CLink className="card-header-action" onClick={() => setShowCard(false)}>
-                    <CIcon name="cil-x-circle" />
-                  </CLink>
-                </div>
+              <CRow>
+                <CCol xs={8} className="mt-2" >Thông tin chi tiết</CCol>
+                <CCol xs={4}>
+                  <CButtonClose onClick={()=>{setItem({}); setVisible(false);}} />
+                </CCol>
+              </CRow>
               </CCardHeader>
-              <CCollapse show={collapsed}>
-                <CCardBody>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                  laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                  ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                </CCardBody>
-              </CCollapse>
+              <CCardBody>
+              <CRow>
+                <CCol lg={6} md={4} xs={6}>Tên công việc: </CCol>
+                <CCol lg={6} md={8} xs={6}>{item?.name}</CCol>
+                <CCol lg={6} md={4} xs={6}>Thời gian: </CCol>
+                <CCol lg={6} md={8} xs={6}>{item?.date}</CCol>
+                <CCol lg={6} md={4} xs={6}>Người thực hiện: </CCol>
+                <CCol lg={6} md={8} xs={6}>{item?.performer}</CCol>
+              </CRow>
+              </CCardBody>
             </CCard>
-          </CFade>
+          </CCol>
+          : ''
+        }
+      </CRow>
+      <CRow>
+        <CCol lg={12} xs="12" sm="6" md="4">
+          <CCard borderColor="primary">
+            <CCardHeader>
+            <CRow>
+              <CCol xs={8} className="mt-2" >Khung tạo chuyền</CCol>
+              <CCol xs={4}>
+                <CButton
+                  className="float-right"
+                  color="success"
+                  variant="outline"
+                  disabled={!disable}
+                  onClick={addSelect}
+                >Thêm khung chọn</CButton>
+              </CCol>
+            </CRow>
+            </CCardHeader>
+            <CCardBody>
+              <CRow>
+                {
+                  listSelect.map((item) => {
+                    return (item);
+                  })
+                }
+              </CRow>
+            </CCardBody>
+            <CCardFooter>
+            <CButton
+                className="float-right mx-2"
+                color="success"
+                variant="outline"
+                disabled={!disable}
+                onClick={removeAll}
+              >Làm mới</CButton>
+              <CButton
+                className="float-right"
+                color="success"
+                variant="outline"
+                disabled={!disable}
+                onClick={addProductLine}
+              >Tạo chuyền</CButton>
+            </CCardFooter>
+          </CCard>
         </CCol>
       </CRow>
     </>

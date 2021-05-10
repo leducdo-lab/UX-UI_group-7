@@ -5,7 +5,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
-    to: '/home/home/dashboard',
+    to: '/home/dashboard',
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
     badge: {
       color: 'info',
@@ -35,18 +35,18 @@ const _nav =  [
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Quản lí công việc',
-    route: '/base',
+    route: '/home/base',
     icon: 'cil-puzzle',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Breadcrumb',
-        to: '/home/base/breadcrumbs',
+        name: 'Bảng công việc',
+        to: '/home/base/works',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Cards',
-        to: '/home/base/cards',
+        name: 'Dây chuyền công việc',
+        to: '/home/base/prodlines',
       },
       {
         _tag: 'CSidebarNavItem',

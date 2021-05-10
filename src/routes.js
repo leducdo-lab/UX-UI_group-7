@@ -3,9 +3,8 @@ import React from 'react';
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
 
-const LandingPage = React.lazy(() => import('./views/home/Home'));
-const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'));
-const Cards = React.lazy(() => import('./views/base/cards/Cards'));
+const Works = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'));
+const ProdLine = React.lazy(() => import('./views/base/cards/Cards'));
 const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'));
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
 const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'));
@@ -45,12 +44,13 @@ const routes = [
   { path: '/home/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/home/theme/colors', name: 'Colors', component: Colors },
   { path: '/home/theme/typography', name: 'Typography', component: Typography },
-  { path: '/home/base', name: 'Base', component: Cards, exact: true },
-  { path: '/home/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
-  { path: '/home/base/cards', name: 'Cards', component: Cards },
+  { path: '/home/base', name: 'Base', component: ProdLine, exact: true },
+  { path: '/home/base/works', name: 'Works', component: Works },
+  { path: '/home/base/prodlines', name: 'ProdLine', component: ProdLine },
   { path: '/home/base/carousels', name: 'Carousel', component: Carousels },
   { path: '/home/base/collapses', name: 'Collapse', component: Collapses },
   { path: '/home/base/forms', name: 'Thêm công việc', component: BasicForms },
+  { path: '/home/base/edit/:id', name: 'Sửa công việc', component: BasicForms },
   { path: '/home/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons },
   { path: '/home/base/list-groups', name: 'List Groups', component: ListGroups },
   { path: '/home/base/navbars', name: 'Navbars', component: Navbars },
