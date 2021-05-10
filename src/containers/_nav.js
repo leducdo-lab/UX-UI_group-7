@@ -122,9 +122,9 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Quản lí công việc',
+    name: 'Quản lí KPI',
     route: '/buttons',
-    icon: 'cil-cursor',
+    icon: 'cil-calculator',
     _children: [
       {
         _tag: 'CSidebarNavItem',
