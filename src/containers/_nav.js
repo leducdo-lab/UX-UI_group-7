@@ -19,13 +19,13 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'KPI tháng',
-    to: '/home/theme/colors',
+    // to: '/home/theme/colors',
     icon: 'cil-drop',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'KPI đơn vị',
-    to: '/home/theme/typography',
+    // to: '/home/theme/typography',
     icon: 'cil-pencil',
   },
   {
