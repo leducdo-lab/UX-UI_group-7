@@ -212,4 +212,4 @@ const Charts = () => {
   )
 }
 
-export default Charts
+export default  Charts
