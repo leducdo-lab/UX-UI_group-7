@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState }from 'react'
 import {
   CButton,
   CCard,
@@ -8,25 +7,39 @@ import {
   CCol,
   CContainer,
   CForm,
-  CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { useForm } from "react-hook-form";
+import './login.css';
+
+import { mailformat, } from '../../../constants';
 
 const Login = () => {
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+    const [form, setForm] = useState({
+        email: '',
+        password: '',
+    });
+    const onSubmit = data => {
+      console.log(form);
+      setForm({...data});
+    };
+
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md="8">
             <CCardGroup>
-              <CCard className="p-4">
+              <CCard className="p-4 mx-5">
                 <CCardBody>
-                  <CForm>
-                    <h1>Login</h1>
+                  <CForm onSubmit={handleSubmit(onSubmit)}>
+                    <h1 style={{'color': 'aqua'}}>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
@@ -34,37 +47,50 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="text" placeholder="Username" autoComplete="username" />
+                      <input
+                          {...register("email", {
+                              required: true,
+                              pattern: mailformat
+                          })}
+                          type="email"
+                          className="form-control"
+                          placeholder="Enter email"
+                      />
+                      {errors?.email?.type === "required" && <span className="span_red">This field is required</span>}
+                      {errors?.email?.type === "pattern" && (
+                          <span className="span_red">Must be in correct email format</span>
+                      )}
                     </CInputGroup>
-                    <CInputGroup className="mb-4">
+                    <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
                         <CInputGroupText>
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" placeholder="Password" autoComplete="current-password" />
+                      <input
+                          type="password"
+                          className="form-control"
+                          id="password"
+                          placeholder="Enter password"
+                          {...register("password", {
+                              required: true,
+                              minLength: 8,
+                          })}
+                      />
+                      {errors?.password?.type === "required" && <span className="span_red">This field is required</span>}
+                      {errors?.password?.type === "minLength" && (
+                          <span className="span_red">Password must be at least 8 characters</span>
+                      )}
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" className="px-4">Login</CButton>
+                        <CButton color="primary" type="submit" className="px-4">Login</CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>
                       </CCol>
                     </CRow>
                   </CForm>
-                </CCardBody>
-              </CCard>
-              <CCard className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
-                <CCardBody className="text-center">
-                  <div>
-                    <h2>Sign up</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.</p>
-                    <Link to="/register">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>Register Now!</CButton>
-                    </Link>
-                  </div>
                 </CCardBody>
               </CCard>
             </CCardGroup>

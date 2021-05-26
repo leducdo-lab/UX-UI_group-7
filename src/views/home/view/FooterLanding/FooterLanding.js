@@ -7,7 +7,7 @@ import Google from './google-plus.png';
 import Youtube from './youtube.png';
 const FooterLanding = () => {
     return (
-        <div>
+        <div id="footer">
             <section id="dx-footer" className="dx-container">
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">

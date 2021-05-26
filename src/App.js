@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import './scss/style.scss';
+import LandingPage from './views/home/Home';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -16,7 +17,8 @@ const Login = React.lazy(() => import('./views/pages/login/Login'));
 const Register = React.lazy(() => import('./views/pages/register/Register'));
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
-const Home = React.lazy(() => import('./views/home/Home'));
+const GroupKPI = React.lazy(() => import('./views/pages/KPI/GroupKPI'));
+const EmployeeKPI = React.lazy(() => import('./views/pages/KPI/EmployeeKPI'));
 
 class App extends Component {
 
@@ -25,12 +27,14 @@ class App extends Component {
       <HashRouter>
           <React.Suspense fallback={loading}>
             <Switch>
-              <Route exact path="/" name="Home" render={props => <Home {...props} />} />
               <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />
               <Route exact path="/register" name="Register Page" render={props => <Register {...props}/>} />
+              <Route exact path="/group-kpi" name="Group KPI" render={props => <GroupKPI {...props}/>} />
+              <Route exact path="/employee-kpi" name="Group KPI" render={props => <EmployeeKPI {...props}/>} />
               <Route exact path="/404" name="Page 404" render={props => <Page404 {...props}/>} />
               <Route exact path="/500" name="Page 500" render={props => <Page500 {...props}/>} />
-              <Route path="/" name="Home" render={props => <TheLayout {...props}/>} />
+              <Route path="/home" name="Home" render={props => <TheLayout {...props}/>} />
+              <Route exact path='/' component={LandingPage}/>
             </Switch>
           </React.Suspense>
       </HashRouter>

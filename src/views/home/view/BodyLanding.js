@@ -14,9 +14,9 @@ const BodyLanding = () => {
     return (
         <div>
             <section id="dx-intro" className="dx-container dx-intro-container">
-                <div className="row p-center-h">
+                <div className="row p-center-h" id="gioithieu">
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <h3 className="dx-sologan text-center">DX Pharma - An toàn và đảm bảo là trên hết</h3>
+                        <h3 className="dx-sologan text-center">Garment Factory - Nhanh chóng và chính xác là trên hết</h3>
                         <ul className="dx-services">
                             <li className="dx-service-item"><i className="fa fa-check"></i>Môi trường làm việc số thân thiện và thuận tiện cho mọi nhân viên</li>
                             <li className="dx-service-item"><i className="fa fa-check"></i>Hỗ trợ lãnh đạo, quản lý các cấp theo dõi điều hành công việc thông qua hệ thống dashboard</li>
@@ -29,7 +29,7 @@ const BodyLanding = () => {
             </section>
             <section id="dx-service" className="dx-container">
                 <h3 className="text-center">Nhiệm vụ hàng đầu</h3>
-                <p className="rule-content">Đảm bảo cung ứng đủ về số lượng, an toàn về chất lượng thuốc, vắc xin, sinh phẩm và trang thiết bị y tế với giá cả hợp lý phục vụ nhu cầu chăm sóc sức khỏe nhân dân.</p>
+                <p className="rule-content">Đảm bảo cung ứng đủ về số lượng, chất lượng của sản phẩm, phục vụ nhu cầu may mặc</p>
                 <div className="row p-center">
                     <Slogan imgName={kpi} title={'KPI'} content={'Đảm bảo năng xuất tuyệt đối'} />
                     <Slogan imgName={document} title={'GIẤY TỜ'} content={'Đảm bảo sự minh bạch và hợp pháp'} />
