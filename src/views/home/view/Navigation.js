@@ -11,12 +11,12 @@ const Navigation = () => {
     return (
       <div>
         <Navbar bg="primary" variant="dark" fixed='top'>
-          <Link to="/" style={{'textDecoration': 'none'}}>
-            <h1>Pharma DX</h1>
+          <Link to="/" style={{'textDecoration': 'none', 'color': 'white'}}>
+            <h2>Garment Factory</h2>
           </Link>
           <Nav className="ml-auto ml-fix" >
-              <Nav.Link href="#"><span className='dx-options'>Giới thiệu</span></Nav.Link>
-              <Nav.Link href="#"><span className='dx-options'>Liên hệ</span></Nav.Link>
+              <a href="#/#gioithieu"><span className='dx-options'>Giới thiệu</span></a>
+              <a href="#/#footer"><span className='dx-options'>Liên hệ</span></a>
           </Nav>
           <Button variant="light"><a className='dx-auth' href="#/login">Đăng nhập</a></Button>
         </Navbar>

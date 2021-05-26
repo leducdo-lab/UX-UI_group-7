@@ -22,7 +22,7 @@ const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
 const Dashboard = () => {
   return (
     <>
-      {/* <WidgetsDropdown /> */}
+      <WidgetsDropdown />
       <CCard>
         <CCardBody>
           <CRow>
@@ -316,10 +316,10 @@ const Dashboard = () => {
                   </div>
 
                 </CCol>
-              </CRow> 
+              </CRow>
 
               <br /> */}
-                
+
               <table className="table table-hover table-outline mb-0 d-none d-sm-table">
                 <thead className="thead-light">
                   <tr>
