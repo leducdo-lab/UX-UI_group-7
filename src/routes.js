@@ -37,6 +37,8 @@ const Typography = React.lazy(() => import('./views/theme/typography/Typography'
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
+const GroupKPI = React.lazy(() => import('./views/pages/KPI/GroupKPI'));
+const EmployeeKPI = React.lazy(() => import('./views/pages/KPI/EmployeeKPI'));
 
 const routes = [
   { path: '/home', exact: true, name: 'Home' },
@@ -79,7 +81,9 @@ const routes = [
   { path: '/home/notifications/toaster', name: 'Toaster', component: Toaster },
   { path: '/home/widgets', name: 'Widgets', component: Widgets },
   { path: '/home/users', exact: true,  name: 'Users', component: Users },
-  { path: '/home/users/:id', exact: true, name: 'User Details', component: User }
+  { path: '/home/users/:id', exact: true, name: 'User Details', component: User },
+  { path: '/group-kpi', name: 'Group KPI', component: GroupKPI},
+  { path: '/employee-kpi', name: 'Employee KPI', component: EmployeeKPI}
 ];
 
 export default routes;

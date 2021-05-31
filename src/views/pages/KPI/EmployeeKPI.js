@@ -7,7 +7,13 @@ import {
   CCardGroup,
   CCardHeader,
   CDataTable,
-  CBadge
+  CBadge,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownHeader,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle
 } from '@coreui/react'
 import {
   CChartBar,
@@ -74,9 +80,60 @@ const EmployeeKPI = () => {
             </CCardBody>
           </CCard>
         
+          <CCard>
+        <CCardHeader>
+          Kết quả đánh giá KPI của cá nhân theo giờ
+          <CRow>
+        Chọn ngày: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               24/5/2021
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> 24/5/2021</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>26/5/2021</CDropdownItem>
+                <CDropdownItem>27/5/2021</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
+        </CCardHeader>
+        <CCardBody>
+          <CChartLine
+            datasets={[
+              {
+                label: 'Nguyen Van A',
+                backgroundColor: 'rgb(228,102,81,0.9)',
+                data: [30, 39, 10, 50, 30, 70, 35,  39, 10, 50]
+              }
+            ]}
+            options={{
+              tooltips: {
+                enabled: true
+              }
+            }}
+            labels = {['8h','9h','10h','11h','12h','13h','14h','15h','16h','17h']}
+          />
+        </CCardBody>
+      </CCard>
+        
         <CCard className="mt-3">
         <CCardHeader>
           KPI tính theo hiệu quả công việc mỗi ngày
+          <CRow>
+        Chọn ngày: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               24/5/2021
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> 24/5/2021</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>26/5/2021</CDropdownItem>
+                <CDropdownItem>27/5/2021</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
         </CCardHeader>
         <CCardBody>
            <CChartPie
@@ -104,6 +161,20 @@ const EmployeeKPI = () => {
         <CCard>
             <CCardHeader>
             Kết quả đánh giá KPI trong tháng
+            <CRow>
+        Chọn tháng: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               Tháng 5
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> Tháng 5</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Tháng 6</CDropdownItem>
+                <CDropdownItem>Tháng 7</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
             </CCardHeader>
             <CCardBody>
             <CChartBar

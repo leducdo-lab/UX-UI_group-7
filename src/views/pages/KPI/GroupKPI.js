@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   CRow,
   CCol,
@@ -7,7 +7,13 @@ import {
   CCardGroup,
   CCardHeader,
   CDataTable,
-  CBadge
+  CBadge,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownHeader,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle
 } from '@coreui/react'
 import {
   CChartBar,
@@ -16,6 +22,8 @@ import {
 } from '@coreui/react-chartjs'
 
 import userKPIData from '../../users/UserKPIData'
+import Home from 'src/views/home/Home'
+import Dashboard from 'src/views/dashboard/Dashboard'
 
 const getBadge = status => {
   switch (status) {
@@ -32,12 +40,27 @@ const fields = ['name','registered', 'role', 'status']
 const GroupKPI = () => {
 
   return (
+    
     <CCardGroup>
        <CRow className="mt-5" style={{fontSize: '3rem', textAlign: 'center' }}>
             Tổng kết KPI của bộ phận 
         </CRow>
+      
       <CCol sm="8" className="mx-auto mt-3">
-        
+      <CRow>
+        Chọn bộ phận: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               Dây chuyền 01
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> Dây chuyền 01</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Dây chuyền 02</CDropdownItem>
+                <CDropdownItem>Dây chuyền 03</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
         <CRow>
             Trưởng bộ phận: Nguyễn Văn A 
         </CRow>
@@ -73,10 +96,80 @@ const GroupKPI = () => {
             />
             </CCardBody>
           </CCard>
+
+          <CCard>
+        <CCardHeader>
+          Kết quả đánh giá KPI của bộ phận theo giờ
+          <CRow>
+        Chọn ngày: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               24/5/2021
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> 24/5/2021</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>26/5/2021</CDropdownItem>
+                <CDropdownItem>27/5/2021</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
+        </CCardHeader>
+        <CCardBody>
+          <CChartLine
+            datasets={[
+              {
+                label: 'Công',
+                borderColor: 'rgb(228,102,81,0.9)',
+                data: [30, 39, 10, 50, 30, 70, 35,  39, 10, 50],
+                fill: false,
+              },
+              {
+                label: 'Đô',
+                borderColor: 'rgb(0,216,255,0.9)',
+                data: [39, 80, 40, 35, 40, 20, 45, 39, 80, 40],
+                fill: false,
+              },
+              {
+                label: 'Hiếu',
+                borderColor: 'rgb(64,255,25)',
+                data: [49, 70, 30, 45, 30, 10, 55, 45, 30, 10,],
+                fill: false,
+              },
+              {
+                label: 'Luật',
+                borderColor: 'rgb(255,255,25)',
+                data: [20, 20, 45, 39, 80, 40, 35, 48, 20, 45, 39],
+                fill: false,
+              }
+            ]}
+            options={{
+              tooltips: {
+                enabled: true
+              }              
+            }}
+            labels = {['8h','9h','10h','11h','12h','13h','14h','15h','16h','17h']}
+          />
+        </CCardBody>
+      </CCard>
         
         <CCard className="mt-3">
         <CCardHeader>
           KPI tính theo hiệu quả công việc mỗi ngày
+          <CRow>
+        Chọn ngày: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               24/5/2021
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> 24/5/2021</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>26/5/2021</CDropdownItem>
+                <CDropdownItem>27/5/2021</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
         </CCardHeader>
         <CCardBody>
            <CChartPie
@@ -104,6 +197,20 @@ const GroupKPI = () => {
         <CCard>
             <CCardHeader>
             Kết quả đánh giá KPI trong tháng
+            <CRow>
+        Chọn tháng: 
+      <CDropdown className="mx-1 mt-n1">
+              <CDropdownToggle>
+               Tháng 5
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header> Tháng 5</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Tháng 6</CDropdownItem>
+                <CDropdownItem>Tháng 7</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+      </CRow>
             </CCardHeader>
             <CCardBody>
             <CChartBar
@@ -128,5 +235,4 @@ const GroupKPI = () => {
     </CCardGroup>
   )
 }
-
-export default GroupKPI
+export default GroupKPI;
