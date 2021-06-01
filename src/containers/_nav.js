@@ -297,6 +297,24 @@ const _nav =  [
   //   _tag: 'CSidebarNavDivider',
   //   className: 'm-2'
   // }
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Quản lí kho',
+    route: '/home/base',
+    icon: 'cil-people',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Quản lý sản phẩm',
+        to: '/home/base/tables',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Quản lý nguyên liệu',
+        to: '/home/base/tables',
+      }
+    ]
+  }
 ]
 
 export default _nav

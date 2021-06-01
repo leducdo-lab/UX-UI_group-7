@@ -18,7 +18,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-const Jumbotrons = () => {
+const Modal = () => {
 
   const [formProduct, setFormProduct] = useState({
     name: '',
@@ -89,18 +89,15 @@ const Jumbotrons = () => {
       // priority_level: '',
     });
   }
-
-  const toTable=()=>{
-    window.location.assign('#/home/base/tables')
-  }
-
+const refreshPage=()=>{
+  window.location.reload();
+}
   setTimeout(function () {
     setMessage('');
   }, 6000);
 
   return (
     <>
-      <CRow>
         <CCol xs="12" md="12">
           <CCard>
             <CCardHeader>
@@ -113,7 +110,7 @@ const Jumbotrons = () => {
               <CForm onSubmit={(event)=>{handleSubmit(event)}} encType="multipart/form-data" className="form-horizontal">
                 <CFormGroup row>
                   <CCol md="3">
-                    <CLabel htmlFor="text-input">Tên công việc</CLabel>
+                    <CLabel htmlFor="text-input">Tên sản phẩm</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
                     <CInput
@@ -131,7 +128,6 @@ const Jumbotrons = () => {
                     <CLabel htmlFor="so_luong">Số lượng</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
-                    {/* <CSelect */}
                     <CInput
                       custom name="so_luong"
                       id="so_luong"
@@ -139,100 +135,9 @@ const Jumbotrons = () => {
                       value={formProduct.so_luong}
                       onChange={(e) => {setFormProduct({...formProduct, so_luong: e.target.value})}}
                     >
-                      {/* <option value="" selected>Chọn đơn vị</option>
-                      <option value="HCI 01">HCI 01</option>
-                      <option value="HCI 02">HCI 02</option>
-                      <option value="HCI 03">HCI 03</option>
-                      <option value="HCI 04">HCI 04</option>
-                      <option value="HCI 05">HCI 05</option>
-                      <option value="HCI 06">HCI 06</option>
-                      <option value="HCI 07">HCI 07</option>
-                    </CSelect> */}</CInput>
+                      </CInput>
                   </CCol>
                 </CFormGroup>
-                {/* <CFormGroup row>
-                  <CCol md="3">
-                    <CLabel htmlFor="select">Đơn vị phối hợp thực hiện</CLabel>
-                  </CCol>
-                  <CCol xs="12" md="9">
-                    <CSelect
-                      custom name="select"
-                      id="select"
-                      required
-                      value={form.coor_unit}
-                      onChange={(e) => {setForm({...form, coor_unit: e.target.value})}}
-                    >
-                      <option value="" selected>Chọn đơn vị</option>
-                      <option value="HCI 01">HCI 01</option>
-                      <option value="HCI 02">HCI 02</option>
-                      <option value="HCI 03">HCI 03</option>
-                      <option value="HCI 04">HCI 04</option>
-                      <option value="HCI 05">HCI 05</option>
-                      <option value="HCI 06">HCI 06</option>
-                      <option value="HCI 07">HCI 07</option>
-                    </CSelect>
-                  </CCol>
-                </CFormGroup><br/><br/>
-                <CFormGroup row>
-                  <CCol md="3">
-                    <CLabel htmlFor="text-input">Người thực hiện</CLabel>
-                  </CCol>
-                  <CCol xs="12" md="9">
-                    <CInput
-                      id="text-input"
-                      name="text-input"
-                      required
-                      placeholder="Nhập người thực hiện"
-                      value={form.performer}
-                      onChange={(e) => {setForm({...form, performer: e.target.value})}}
-                    />
-                  </CCol>
-                </CFormGroup>
-                <CFormGroup row>
-                  <CCol md="3">
-                    <CLabel htmlFor="text-input">Người phê duyệt</CLabel>
-                  </CCol>
-                  <CCol xs="12" md="9">
-                    <CInput
-                      id="text-input"
-                      name="text-input"
-                      placeholder="Nhập người phê duyệt"
-                      required
-                      value={form.approver}
-                      onChange={(e) => {setForm({...form, approver: e.target.value})}}
-                    />
-                  </CCol>
-                </CFormGroup>
-                <CFormGroup row>
-                  <CCol md="3">
-                    <CLabel htmlFor="text-input">Người tư vấn</CLabel>
-                  </CCol>
-                  <CCol xs="12" md="9">
-                    <CInput
-                      id="text-input"
-                      name="text-input"
-                      placeholder="Nhập người tư vấn"
-                      required
-                      value={form.consultants}
-                      onChange={(e) => {setForm({...form, consultants: e.target.value})}}
-                    />
-                  </CCol>
-                </CFormGroup>
-                <CFormGroup row>
-                  <CCol md="3">
-                    <CLabel htmlFor="text-input">Người quan sát</CLabel>
-                  </CCol>
-                  <CCol xs="12" md="9">
-                    <CInput
-                      id="text-input"
-                      name="text-input"
-                      placeholder="Nhập người quan sát"
-                      required
-                      value={form.observer}
-                      onChange={(e) => {setForm({...form, observer: e.target.value})}}
-                    />
-                  </CCol>
-                </CFormGroup> */}
                 <CFormGroup row>
                   <CCol md="3">
                     <CLabel htmlFor="date-input">Ngày thực hiện</CLabel>
@@ -305,7 +210,7 @@ const Jumbotrons = () => {
                 </CFormGroup> */}
                 <CFormGroup row>
                   <CCol md="2">
-                    <CButton type="submit" size="sm" color="primary" onClick={toTable}>
+                    <CButton type="submit" size="sm" color="primary" onClick={refreshPage}>
                       <CIcon name="cil-scrubber" /> Submit</CButton>
                   </CCol>
                   <CCol md="2">
@@ -316,10 +221,8 @@ const Jumbotrons = () => {
             </CCardBody>
           </CCard>
         </CCol>
-
-      </CRow>
     </>
   )
 }
 
-export default Jumbotrons
+export default Modal
