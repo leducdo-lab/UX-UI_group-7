@@ -1,4 +1,5 @@
 import React from 'react';
+import ExportForm from './views/base/switches/Switches';
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -51,10 +52,10 @@ const routes = [
   { path: '/home/base/prodlines', name: 'ProdLine', component: ProdLine },
   { path: '/home/base/carousels', name: 'Carousel', component: Carousels },
   { path: '/home/base/collapses', name: 'Collapse', component: Collapses },
-  { path: '/home/base/forms', name: 'Thêm công việc', component: BasicForms },
   { path: '/home/base/edit/:id', name: 'Sửa công việc', component: BasicForms },
   { path: '/home/base/editProduct/:id', name: 'Sửa thông tin sản phẩm', component: Jumbotrons },
-  { path: '/home/base/jumbotrons', name: 'Thêm sản phẩm', component: Jumbotrons },
+  { path: '/home/base/editMaterial/:id', name: 'Sửa thông tin nguyên liệu', component: Tooltips },
+  { path: '/home/base/export/:id', name: 'Xuất kho', component: Switches },
   { path: '/home/base/list-groups', name: 'List Groups', component: ListGroups },
   { path: '/home/base/navbars', name: 'Navbars', component: Navbars },
   { path: '/home/base/navs', name: 'Navs', component: Navs },
@@ -62,9 +63,8 @@ const routes = [
   { path: '/home/base/popovers', name: 'Popovers', component: Popovers },
   { path: '/home/base/progress-bar', name: 'Progress Bar', component: ProgressBar },
   { path: '/home/base/switches', name: 'Switches', component: Switches },
-  { path: '/home/base/tables', name: 'Tables', component: Tables },
-  { path: '/home/base/tabs', name: 'Tabs', component: Tabs },
-  { path: '/home/base/tooltips', name: 'Tooltips', component: Tooltips },
+  { path: '/home/base/tables', name: 'Quản lý sản phẩm', component: Tables },
+  { path: '/home/base/tabs', name: 'Quản lý nguyên liệu', component: Tabs },
   { path: '/home/buttons', name: 'Buttons', component: Buttons, exact: true },
   { path: '/home/buttons/buttons', name: 'Buttons', component: Buttons },
   { path: '/home/buttons/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns },

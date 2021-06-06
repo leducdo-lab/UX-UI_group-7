@@ -22,16 +22,11 @@ const Modal = () => {
 
   const [formProduct, setFormProduct] = useState({
     name: '',
-    so_luong: '',
-    // coor_unit: '',
-    // performer: '',
-    // approver: '',
-    // consultants: '',
-    // observer: '',
-    date: '',
+    yeu_cau: '',
+    san_xuat: '',
+    ngay_nhap_kho: '',
     content: '',
-    force: false,
-    // priority_level: '',
+
   });
 
   const [message, setMessage] = useState('');
@@ -78,15 +73,9 @@ const Modal = () => {
     setFormProduct({
       name: '',
       so_luong: '',
-      // coor_unit: '',
-      // performer: '',
-      // approver: '',
-      // consultants: '',
-      // observer: '',
-      date: '',
+      ngay_nhap_kho: '',
       content: '',
-      force: true,
-      // priority_level: '',
+      
     });
   }
 const refreshPage=()=>{
@@ -102,7 +91,7 @@ const refreshPage=()=>{
           <CCard>
             <CCardHeader>
               <CRow>
-                <CCol lg={8} md="8" >{!id? 'Thêm sản phẩm' : 'Sửa thông tin sản phẩm'}</CCol>
+                <CCol lg={8} md="8" >Thêm sản phẩm</CCol>
                 <CCol className="float-right text-success" lg={4} md="4" >{message? message : ''}</CCol>
               </CRow>
             </CCardHeader>
@@ -117,7 +106,7 @@ const refreshPage=()=>{
                       id="text-input"
                       name="text-input"
                       value={formProduct.name}
-                      placeholder="Nhập tên công việc"
+                      placeholder="Nhập tên sản phẩm"
                       onChange={(e) => {setFormProduct({...formProduct, name: e.target.value})}}
                       required
                     />
@@ -125,22 +114,39 @@ const refreshPage=()=>{
                 </CFormGroup>
                 <CFormGroup row>
                   <CCol md="3">
-                    <CLabel htmlFor="so_luong">Số lượng</CLabel>
+                    <CLabel htmlFor="yeu_cau">Số lượng yêu cầu</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
                     <CInput
-                      custom name="so_luong"
-                      id="so_luong"
+                      custom name="yeu_cau"
+                      id="yeu_cau"
+                      placeholder='Số lượng'
                       required
                       value={formProduct.so_luong}
-                      onChange={(e) => {setFormProduct({...formProduct, so_luong: e.target.value})}}
+                      onChange={(e) => {setFormProduct({...formProduct, yeu_cau: e.target.value})}}
                     >
                       </CInput>
                   </CCol>
                 </CFormGroup>
                 <CFormGroup row>
                   <CCol md="3">
-                    <CLabel htmlFor="date-input">Ngày thực hiện</CLabel>
+                    <CLabel htmlFor="san_xuat">Số lượng sản xuất được</CLabel>
+                  </CCol>
+                  <CCol xs="12" md="9">
+                    <CInput
+                      custom name="san_xuat"
+                      id="san_xuat"
+                      placeholder='Số lượng sản xuất được'
+                      required
+                      value={formProduct.san_xuat}
+                      onChange={(e) => {setFormProduct({...formProduct, san_xuat: e.target.value})}}
+                    >
+                      </CInput>
+                  </CCol>
+                </CFormGroup>
+                <CFormGroup row>
+                  <CCol md="3">
+                    <CLabel htmlFor="date-input">Ngày nhập kho</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
                     <CInput
@@ -149,8 +155,8 @@ const refreshPage=()=>{
                       name="date-input"
                       placeholder="date"
                       required
-                      value={formProduct.date}
-                      onChange={(e) => {setFormProduct({...formProduct, date: e.target.value})}}
+                      value={formProduct.ngay_nhap_kho}
+                      onChange={(e) => {setFormProduct({...formProduct, ngay_nhap_kho: e.target.value})}}
                     />
                   </CCol>
                 </CFormGroup>
@@ -171,45 +177,8 @@ const refreshPage=()=>{
                     />
                   </CCol>
                 </CFormGroup><br/><br/>
-
-
                 <CFormGroup row>
-                  <CCol tag="label" sm="3" className="col-form-label">
-                    Bắt buộc
-                  </CCol>
-                  <CCol sm="9">
-                    <CSwitch
-                      className="mr-1"
-                      color="primary"
-                      defaultChecked
-                      onChange={(e) => {
-                        setFormProduct({...formProduct, force: e.target.checked});
-                      }}
-                    />
-                  </CCol>
-                </CFormGroup>
-                {/* <CFormGroup row>
-                  <CCol md="3">
-                    <CLabel htmlFor="select">Mức độ ưu tiên</CLabel>
-                  </CCol>
-                  <CCol xs="12" md="9">
-                    <CSelect
-                      custom name="select"
-                      id="select"
-                      required
-                      value={form.priority_level}
-                      onChange={(e) => {setForm({...form, priority_level: e.target.value})}}
-                    >
-                      <option value="Thấp">Thấp</option>
-                      <option value="Trung bình">Trung bình</option>
-                      <option value="Tiêu chuẩn">Tiêu chuẩn</option>
-                      <option value="Cao">Cao</option>
-                      <option value="Khẩn cấp">Khẩn cấp</option>
-                    </CSelect>
-                  </CCol>
-                </CFormGroup> */}
-                <CFormGroup row>
-                  <CCol md="2">
+                  <CCol className='d-flex' md="2">
                     <CButton type="submit" size="sm" color="primary" onClick={refreshPage}>
                       <CIcon name="cil-scrubber" /> Submit</CButton>
                   </CCol>

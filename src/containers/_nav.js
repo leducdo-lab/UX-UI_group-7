@@ -311,7 +311,7 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Quản lý nguyên liệu',
-        to: '/home/base/tables',
+        to: '/home/base/tabs',
       }
     ]
   }

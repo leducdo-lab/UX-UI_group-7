@@ -32,25 +32,16 @@ const fields = [
     label: 'Tên sản phẩm'
   },
   {
-    key: 'so_luong',
-    label: 'Số lượng'
+    key: 'yeu_cau',
+    label: 'Số lượng yêu cầu'
   },
-  // },
-  // {
-  //   key: 'coor_unit',
-  //   label: 'Đơn vị phối hợp'
-  // },
-  // {
-  //   key: 'performer',
-  //   label: 'Người thực hiện'
-  // },
-  // {
-  //   key: 'date',
-  //   label: 'Thời gian'
-  // },
   {
-    key: 'status',
-    label: 'Trạng thái'
+    key: 'san_xuat',
+    label: 'Số lượng sản xuất'
+  },
+  {
+    key: 'ngay_nhap_kho',
+    label: 'Ngày nhập kho'
   },
   {
     key: 'show_details',
@@ -122,7 +113,7 @@ const Breadcrumbs = () => {
       localStorage.setItem('listProducts', JSON.stringify(datas));
     }
   }
-  console.log(state.isOpen)
+  
   return (
     <CRow>
       <CCol xs="24" lg="12">
@@ -132,7 +123,8 @@ const Breadcrumbs = () => {
             <div className="ml-auto">
               <CButton color='primary' variant='outline' size='sm' onClick={openModal}>Thêm
               </CButton>
-              <CModal className='mt-1' show={state.isOpen} size='xl'>
+              <CModal className='m' show={state.isOpen} size='xl'>
+                <br></br>
                 <Modal/>
               </CModal>
             </div>
@@ -166,7 +158,7 @@ const Breadcrumbs = () => {
                   (item, index) => {
                     return (
                       <td className='d-flex'>
-                      <CButton onClick={openModal}>
+                      <CButton>
                         <Link
                             to={`/home/base/editProduct/${item.id}`}>
                           <CIcon className="mt-1 mx-2" name="cil-pencil" size="sm" /></Link>
