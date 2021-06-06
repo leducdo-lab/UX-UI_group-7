@@ -180,10 +180,11 @@ const refreshPage=()=>{
                 <CFormGroup row>
                   <CCol className='d-flex' md="2">
                     <CButton type="submit" size="sm" color="primary" onClick={refreshPage}>
-                      <CIcon name="cil-scrubber" /> Submit</CButton>
+                      Save
+                    </CButton>
                   </CCol>
                   <CCol md="2">
-                    <CButton onClick={resetForm} type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
+                    <CButton type="cancel" size="sm" color="danger" onClick={refreshPage}> Cancel</CButton>
                   </CCol>
                 </CFormGroup>
               </CForm>

@@ -160,14 +160,14 @@ const refreshPage=()=>{
                       onChange={(e) => {setFormMaterial({...formMaterial, content: e.target.value})}}
                     />
                   </CCol>
-                </CFormGroup><br/><br/>
+                </CFormGroup>
                 <CFormGroup row>
-                  <CCol className='d-flex' md="2">
-                    <CButton type="submit" size="sm" color="primary" onClick={refreshPage}>
-                      <CIcon name="cil-scrubber" /> Submit</CButton>
+                  <CCol sm="2"> 
+                    <CButton type="submit" size="xl" color="primary" onClick={refreshPage}>
+                      Save</CButton>
                   </CCol>
-                  <CCol md="2">
-                    <CButton onClick={resetForm} type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
+                  <CCol sm="2"> 
+                    <CButton onClick={refreshPage} type="reset" size="xl" color="danger">Cancel</CButton>
                   </CCol>
                 </CFormGroup>
               </CForm>
